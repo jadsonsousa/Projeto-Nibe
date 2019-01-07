@@ -38,51 +38,93 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="empresa.html">Empresa</a></li>
-          <li><a href="servicos.html">Serviços</a></li>
-          <li><a href="clientes.html">Clientes</a></li>
-          <li><a href="contato.html">Contatos</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="empresa.php">Empresa</a></li>
+          <li><a href="servicos.php">Serviços</a></li>
+          <li><a href="clientes.php">Clientes</a></li>
+          <li><a href="contato.php">Contatos</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li>
+            <li>
+              <a href="#" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-log-in"></span>
+                Login
+              </a>
+            </li>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-  
- <div class="container">
+
+  <div class="container">
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <form action="">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="text" name="Nome" placeholder="Digite seu email" id="email">
+              </div>
+
+              <div class="form-group">
+                <label for="senha">Email</label>
+                <input class="form-control" type="password" name="senha" placeholder="Digite sua senha" id="senha">
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              <button type="submit" class="btn btn-primary" data-dismiss="modal">Logar</button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+
     <div class="page-header">
       <h3>Contato</h3><br>
     </div>    
 
     <div class="row">
-      <form action="/action_page.php">
+      <form action="/action_page.php" name="formContato">
         <div class="col-md-6">
 
           <div class="form-group">
             <label for="nome">Nome:</label>
-            <input type="text" class="form-control" id="nome" placeholder="Digite o nome" name="nome">
+            <input type="text" class="form-control" id="nome" placeholder="Digite o nome" name="nome" required>
           </div>
 
           <div class="form-group">
             <label for="endereco">Endereço:</label>
-            <input type="text" class="form-control" id="endereco" placeholder="Digite o endereço" name="endereco">
+            <input type="text" class="form-control" id="endereco" placeholder="Digite o endereço" name="endereco" required>
           </div>
 
           <div class="form-group">
             <label for="fone">Fone:</label>
-            <input type="text" class="form-control" id="fone" placeholder="Digite o telefone ou celular" name="fone">
+            <input type="text" class="form-control" id="fone" placeholder="Digite o telefone ou celular" name="fone" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Digite o email" name="email">
+            <input type="email" class="form-control" id="email" placeholder="Digite o email" name="email" required>
           </div>
 
           <div class="form-group">
             <label for="empresa">Empresa:</label>
-            <input type="text" class="form-control" id="empresa" placeholder="Digite o nome de sua empresa" name="endereco">
+            <input type="text" class="form-control" id="empresa" placeholder="Digite o nome de sua empresa" name="endereco" required>
           </div>
 
           <div class="checkbox">
@@ -95,11 +137,11 @@
        <div class="col-md-6">
         <div class="form-group">
           <label for="mensagem">Mensagem:</label>
-          <textarea type="text" rows="10" class="form-control" id="mensagem" placeholder="Digite o nome de sua empresa" name="mensagem">
+          <textarea type="text" rows="10" class="form-control" id="mensagem" placeholder="Digite o nome de sua empresa" name="mensagem" required>
           </textarea> 
         </div>
         <button type="reset" class="btn btn-default">Cancelar</button>
-        <button type="submit" class="btn btn-primary" onclick="alert('Está em desenvolvimento')">Enviar</button>
+        <button type="submit" class="btn btn-primary" onclick="">Enviar</button>
       </form>
     </div>
     

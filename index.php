@@ -35,11 +35,11 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="empresa.html">Empresa</a></li>
-          <li><a href="servicos.html">Serviços</a></li>
-          <li><a href="clientes.html">Clientes</a></li>
-          <li><a href="contato.html">Contatos</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="empresa.php">Empresa</a></li>
+          <li><a href="servicos.php">Serviços</a></li>
+          <li><a href="clientes.php">Clientes</a></li>
+          <li><a href="contato.php">Contatos</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
@@ -79,7 +79,7 @@
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
               <button type="submit" class="btn btn-primary" data-dismiss="modal">Logar</button>
             </div>
           </form>
