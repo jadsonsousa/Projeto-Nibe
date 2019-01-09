@@ -3,6 +3,8 @@
 	echo ' Seja Bem Vindo!<br/>';
 	echo 'home funcionando';
 
+	$cad = isset($_GET['cad']) ? $_GET['cad'] : 0;
+
 	//session_start();
 
 ?>
@@ -23,38 +25,37 @@
 		<script type="text/javascript">
 			$(document).ready( function(){
 
-				//associar o evento de click ao botão
-				$('#btn-tweet').click( function(){
+				//$('#cad_sucesso').show();
 
+				$('#form_usuario').hide();
+
+				
+
+				//exibe o formulário
+				$('#btn_usuario').click(
 					
-					if ($('#texto_tweet').val().length > 0) {
-
-						$.ajax({
-							url: 'inclui_tweet.php',
-							method: 'post',
-							data: $('#form_tweet').serialize(),
-							success: function(data){
-								$('#texto_tweet').val('');
-								atualizaTweet();
-							}
-						});
-					}	
+					function(){$("#form_usuario").show(1000);
+					
+				
 				});
 
-				function atualizaTweet() {
-					// carrega os tweets
+				$('#btn-cadastrar').click(function(){
 
-					$.ajax({
-						url: 'get_tweet.php',
-						success: function (data) {
-							$('#tweets').html(data);
-							
-						}
-					});
+
+						//alert('funcionando');
+		
+
+				});
+
+				
+
+				$('#btn_ponto').click( function(){
 					
-				}
+					$("#form_usuario").hide(1000);
+					
+				});
 
-				atualizaTweet();
+			
 
 			});
 		</script>
@@ -99,39 +100,54 @@
 	    	<div class="col-md-3">
 	    		<div class="panel panel-default">
 	    			<div class="panel-body">
-	    				<button class="btn btn-primary btn-block">Cadastrar Usuários</button>
-						<button class="btn btn-primary btn-block">Cartão de Ponto</button>
+	    				<button class="btn btn-primary btn-block" id="btn_usuario">Cadastrar Usuários</button>
+						<button class="btn btn-primary btn-block" id="btn_ponto">Cartão de Ponto</button>
 
 	    			</div>
 	    		</div>
 	    	</div>
 	    	<div class="col-md-6">
 
-	    		<div class="panel panel-default">
+	    		<div class="panel panel-default" id="form_usuario">
 	    			<div class="panel-body">
-	    				<form method="post" action="insere_usuario.php" id="form_usuario" class="form-horizontal">
+	    				<form method="post" action="insere_usuario.php"  class="form-horizontal" >
 
 								Nome:
-								<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" />
+								<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required/>
 								<br>
 
 								Usuário:
-								<input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuário" />
+								<input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuário" required/>
 								<br>
 
 								Email:
-								<input type="email" name="email" id="email" class="form-control" placeholder="Senha">
+								<input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
 								<br>
 
 								Senha:
-								<input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
+								<input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required>
 								<br>
 
 								<button class="btn btn-primary" id="btn-cadastrar" type="submit">Cadastrar</button>
 
-	    				</form>	
+	    				</form>
+						
+						<!-- <div class="alert alert-success alert-dismissible">
+    						<a href="#" id="cad_sucesso" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    						<strong>Usuário cadastrado com sucesso!</strong>
+  						</div> -->
 	    			</div>
 	    		</div>
+				<?php
+						if ($cad) {
+							echo '<div class="alert alert-success alert-dismissible">
+    						<a href="#" id="cad_sucesso" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    						<strong>Usuário cadastrado com sucesso!</strong>
+  						</div>';
+
+						}
+
+						?>
 
 					<div id="tweets" class="list-group"></div>
 			</div>

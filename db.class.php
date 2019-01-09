@@ -12,10 +12,10 @@ class db{
 	private $usuario = 'root';
 
 	// senha
-	private $senha = '';
+	private $senha = 'grazi2209';
 
 	// banco de dados
-	private $database = 'db_nibe';
+	private $database = 'nibe';
 
 	public function conecta_mysql(){
 
