@@ -20,6 +20,22 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+  <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+          
+      $(document).ready(function(){
+
+        $("#btn_entrar").click(function(){
+          $("#btn_entrar").hide();
+        });
+        
+      });
+
+  </script>
+
+
 </head>
 <body>
 
@@ -61,7 +77,7 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-          <form action="">
+          <form method="post" ><!-- action="validar_acesso.php" -->
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Login</h4>
@@ -69,18 +85,25 @@
             <div class="modal-body">
               <div class="form-group">
                 <label for="email">Email</label>
-                <input class="form-control" type="text" name="Nome" placeholder="Digite seu email" id="email">
+                <input class="form-control" type="text" name="email" placeholder="Digite seu email" id="email">
               </div>
 
               <div class="form-group">
-                <label for="senha">Email</label>
+                <label for="senha">Senha</label>
                 <input class="form-control" type="password" name="senha" placeholder="Digite sua senha" id="senha">
               </div>
 
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-              <button type="submit" class="btn btn-primary" data-dismiss="modal">Logar</button>
+              <button type="submit" id="btn_entrar" class="btn btn-primary">Entrar</button>
+              <button type="button" id="btn_entrar" class="btn btn-primary">teste</button>
+              <br>
+              <br>
+              <label style="text-align: center; margin-right: 10px;">
+                <a href="#">1º Acesso</a>
+              </label>
+              
             </div>
           </form>
 

@@ -1,0 +1,18 @@
+Banco nibe
+
+create table usuarios(
+	id int not null primary key AUTO_INCREMENT,
+	nome varchar(100) not null,
+	email varchar(100) not null,
+	senha varchar(32) not null
+)
+
+create table ponto(
+	id int not null primary key AUTO_INCREMENT,
+	entrada_manha datetime not null,
+	saida_manha datetime not null,
+	entrada_tarde datetime not null,
+	saida_tarde datetime not null
+)
+
+alter table usuarios add column usuario varchar(100) not null;
