@@ -1,15 +1,15 @@
 <?php
 
 	//por convenssão o session devera ser no inicio de qualquer script
-	//session_start(); // cria uma session e indica pro script que terá acesso as variaveis de session
+	session_start(); // cria uma session e indica pro script que terá acesso as variaveis de session
 
 	require_once('db.class.php');
 
 	$usuario = $_POST['email']; // captura do input
-	$senha = ($_POST['senha']);
+	$senha = md5($_POST['senha']);
 
 
-	$sql = " SELECT nome FROM tb_usuarios where nome = '$usuario' and SENHA = '$senha' ";
+	$sql = " SELECT nome FROM usuarios where nome = '$usuario' and SENHA = '$senha' ";
 
 	$objDb = new db(); // instancia a classe
 
@@ -23,10 +23,11 @@
 		$dados_usuario = mysqli_fetch_array($resultado_id); // recunpera dados do banco e gera um array
 
 		if (isset($dados_usuario['nome'])) {
+			echo 'Usuário já exite';
 
 			//$_SESSION['id_usuario'] = $dados_usuario['id'];
 			//$_SESSION['usuario'] = $dados_usuario['usuario']; // recumpera uma super global session
-			$_SESSION['email'] = $dados_usuario['email']; // recumpera uma super global session
+			$_SESSION['email'] = $dados_usuario['nome']; // recumpera uma super global session
 
 			header('Location: home.php'); //redireciona a pagina autenticada
 

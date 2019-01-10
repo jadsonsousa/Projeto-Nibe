@@ -77,7 +77,7 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-          <form method="post" ><!-- action="validar_acesso.php" -->
+          <form method="post" action="validar_acesso.php" >
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Login</h4>
@@ -97,7 +97,6 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
               <button type="submit" id="btn_entrar" class="btn btn-primary">Entrar</button>
-              <button type="button" id="btn_entrar" class="btn btn-primary">teste</button>
               <br>
               <br>
               <label style="text-align: center; margin-right: 10px;">

@@ -1,11 +1,16 @@
 
 <?php
 	echo ' Seja Bem Vindo!<br/>';
-	echo 'home funcionando';
 
 	$cad = isset($_GET['cad']) ? $_GET['cad'] : 0;
+	echo $data = date("d-m-Y H:i");
 
-	//session_start();
+	session_start();
+
+	// verificar se o usuario já esta autenticado
+	if(!isset($_SESSION['email'])){ 			
+		header('Location: index.php?erro=1'); //redireciona para pagina principal com erro
+	}
 
 ?>
 
@@ -22,43 +27,7 @@
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-		<script type="text/javascript">
-			$(document).ready( function(){
-
-				//$('#cad_sucesso').show();
-
-				$('#form_usuario').hide();
-
-				
-
-				//exibe o formulário
-				$('#btn_usuario').click(
-					
-					function(){$("#form_usuario").show(1000);
-					
-				
-				});
-
-				$('#btn-cadastrar').click(function(){
-
-
-						//alert('funcionando');
-		
-
-				});
-
-				
-
-				$('#btn_ponto').click( function(){
-					
-					$("#form_usuario").hide(1000);
-					
-				});
-
-			
-
-			});
-		</script>
+		<script src="js/javascript.js"></script>
 	
 	</head>
 
@@ -85,7 +54,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li>
             <li>
-              <a href="#">
+              <a href="sair.php">
                 Sair
               </a>
             </li>
@@ -107,7 +76,7 @@
 	    		</div>
 	    	</div>
 	    	<div class="col-md-6">
-
+				<!-- Cadastro Usuário -->
 	    		<div class="panel panel-default" id="form_usuario">
 	    			<div class="panel-body">
 	    				<form method="post" action="insere_usuario.php"  class="form-horizontal" >
@@ -128,28 +97,86 @@
 								<input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required>
 								<br>
 
-								<button class="btn btn-primary" id="btn-cadastrar" type="submit">Cadastrar</button>
+								<button class="btn btn-success" id="btn-cadastrar" type="submit">Cadastrar</button>
 
 	    				</form>
-						
-						<!-- <div class="alert alert-success alert-dismissible">
-    						<a href="#" id="cad_sucesso" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    						<strong>Usuário cadastrado com sucesso!</strong>
-  						</div> -->
+	    			</div>
+	    		</div>				
+
+				<!-- Cadastro Ponto -->
+				<div class="panel panel-default" id="form_ponto">
+	    			<div class="panel-body">
+	    				<form method="post" action="insere_ponto.php"  class="input-group" >
+							<input class="form-control" type="text" name="p_nome" id="p_nome" />
+							<div id="mostra_data">
+								<?php
+									echo ' <input class="form-control" type="text" name="p_nome" id="p_nome" value=" '.$data.' " /> ';
+									?>
+								<br>
+							</div>
+							<span class="input-group">
+							<div class="radio-inline">
+								<label for="">
+									<input type="radio" name="opcao" value="entrada_manha" id="opcao">
+									Entrada manhã
+								</label>
+							</div>
+							<div class="radio-inline">
+								<label for="">
+									<input type="radio" name="opcao" value="saida_manha" id="opcao">
+									Saída manhã
+								</label>
+							</div>
+							<div class="radio-inline">
+								<label for="">
+									<input type="radio" name="opcao" value="entrada_manha" id="opcao">
+									Entrada Tarde
+								</label>
+							</div>
+							<div class="radio-inline">
+								<label for="">
+									<input type="radio" name="opcao" value="saida_tarde" id="opcao">
+									Saída Tarde
+								</label>
+							</div>
+							</span>
+							
+
+							
+							
+								
+								
+								<!-- <span class="input-group"> -->
+	    							<button class="btn btn-default btn-block" id="btn-ponto" type="button">
+										<span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span> Apontar
+									</button>
+									<button class="btn btn-success btn-block" id="btn-registar" type="submit">
+										<span class="glyphicon glyphicon-send" aria-hidden="true"></span> Registrar
+									</button>
+	    						<!-- </span> -->
+	    				</form>
 	    			</div>
 	    		</div>
-				<?php
-						if ($cad) {
+
+				<div id="cad_sucesso">
+					<?php
+						if ($cad == 1) {
 							echo '<div class="alert alert-success alert-dismissible">
-    						<a href="#" id="cad_sucesso" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     						<strong>Usuário cadastrado com sucesso!</strong>
   						</div>';
 
+						} elseif($cad == 2){
+							echo '<div class="alert alert-success alert-dismissible">
+    						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    						<strong>Apontamento registrado com sucesso!</strong>
+  						</div>';
 						}
 
 						?>
+				</div>
 
-					<div id="tweets" class="list-group"></div>
+
 			</div>
 			<div class="col-md-3">
 				<div class="panel panel-default">
